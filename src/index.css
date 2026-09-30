@@ -1,27 +1,25 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap");
-
-:root {
-  font-family: "DM Sans", sans-serif;
-  color: #142b4a;
-  background: #ffffff;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
 * {
   box-sizing: border-box;
 }
 
 html {
-  min-width: 320px;
   scroll-behavior: smooth;
 }
 
 body {
-  min-width: 320px;
   margin: 0;
+  min-width: 320px;
+  color: #14213d;
+  background: #ffffff;
+  font-family:
+    Inter,
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 button,
@@ -31,29 +29,25 @@ textarea {
   font: inherit;
 }
 
-button,
-a {
-  -webkit-tap-highlight-color: transparent;
+button {
+  cursor: pointer;
 }
 
 img {
+  display: block;
   max-width: 100%;
 }
 
-.coming-soon {
-  min-height: 70vh;
-  display: grid;
-  align-content: center;
-  justify-items: center;
-  padding: 40px 20px;
-  text-align: center;
+a {
+  color: inherit;
 }
 
-.coming-soon h1 {
-  margin-bottom: 8px;
-  font-size: 36px;
+::selection {
+  color: #ffffff;
+  background: #14213d;
 }
 
-.coming-soon p {
-  color: #64748b;
+:focus-visible {
+  outline: 3px solid #c69b4b;
+  outline-offset: 3px;
 }
