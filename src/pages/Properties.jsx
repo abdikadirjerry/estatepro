@@ -7,11 +7,11 @@ import {
   LayoutGrid,
   MapPin,
   RotateCcw,
-  Search,
   SlidersHorizontal,
 } from "lucide-react";
 import Header from "../components/Header";
 import PropertyCard from "../components/PropertyCard";
+import StateMessage from "../components/StateMessage";
 import properties from "../data/properties";
 import "./Properties.css";
 
@@ -123,6 +123,7 @@ function Properties() {
                       : "Properties"}{" "}
                     Found
                   </h2>
+
                   <p>
                     {hasActiveFilters
                       ? "Matching your selected filters"
@@ -151,6 +152,7 @@ function Properties() {
                 <label className="properties-sort">
                   <ArrowDownUp size={16} />
                   <span>Sort:</span>
+
                   <select
                     value={sortBy}
                     onChange={(event) => setSortBy(event.target.value)}
@@ -174,6 +176,7 @@ function Properties() {
                   <MapPin size={15} />
                   Location
                 </label>
+
                 <input
                   id="listing-location"
                   type="search"
@@ -190,6 +193,7 @@ function Properties() {
                   <Building2 size={15} />
                   Property Type
                 </label>
+
                 <select
                   id="listing-type"
                   value={propertyType}
@@ -207,6 +211,7 @@ function Properties() {
 
               <div className="properties-filter-field">
                 <label htmlFor="listing-min-price">Minimum Price</label>
+
                 <select
                   id="listing-min-price"
                   value={minPrice}
@@ -226,6 +231,7 @@ function Properties() {
 
               <div className="properties-filter-field">
                 <label htmlFor="listing-max-price">Maximum Price</label>
+
                 <select
                   id="listing-max-price"
                   value={maxPrice}
@@ -309,28 +315,26 @@ function Properties() {
                 ))}
               </div>
             ) : (
-              <div className="properties-empty">
-                <div className="properties-empty-icon">
-                  <Search size={30} />
-                </div>
-                <h2>No Properties Found</h2>
-                <p>
-                  We couldn't find any properties matching your current search.
-                  Try adjusting your filters.
-                </p>
-                <button
-                  type="button"
-                  onClick={clearFilters}
-                  className="properties-empty-btn"
-                >
-                  <RotateCcw size={16} />
-                  Clear All Filters
-                </button>
-              </div>
+              <StateMessage
+                type="empty"
+                title="No Properties Found"
+                description="We couldn't find any properties matching your current search. Try adjusting your filters."
+                action={
+                  <button
+                    type="button"
+                    onClick={clearFilters}
+                    className="properties-empty-btn"
+                  >
+                    <RotateCcw size={16} />
+                    Clear All Filters
+                  </button>
+                }
+              />
             )}
 
             <div className="properties-footer-note">
               <LayoutGrid size={16} />
+
               <span>
                 Showing {filteredProperties.length} of {properties.length}{" "}
                 properties
