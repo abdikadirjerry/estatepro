@@ -14,7 +14,8 @@ const navLinks = [
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const { favorites } = useFavorites();
+  const favoritesContext = useFavorites();
+  const favorites = favoritesContext?.favorites ?? [];
 
   const closeMenu = () => setMenuOpen(false);
 
