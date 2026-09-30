@@ -6,6 +6,7 @@ import FeaturedProperties from "./components/FeaturedProperties";
 import Properties from "./pages/Properties";
 import PropertyDetails from "./pages/PropertyDetails";
 import Favorites from "./pages/Favorites";
+import Agents from "./pages/Agents";
 
 function Home() {
   return (
@@ -43,6 +44,7 @@ function App() {
       <Route path="/about" element={<ComingSoon title="About EstatePro" />} />
       <Route path="/contact" element={<ComingSoon title="Contact Us" />} />
       <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path="/agents" element={<Agents />} />
     </Routes>
   );
 }
