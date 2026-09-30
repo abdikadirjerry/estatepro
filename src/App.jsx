@@ -42,13 +42,10 @@ function App() {
       <Route path="/properties" element={<Properties />} />
       <Route path="/properties/:id" element={<PropertyDetails />} />
       <Route path="/favorites" element={<Favorites />} />
-      <Route path="/agents" element={<ComingSoon title="Our Agents" />} />
-      <Route path="/about" element={<ComingSoon title="About EstatePro" />} />
-      <Route path="/contact" element={<ComingSoon title="Contact Us" />} />
-      <Route path="*" element={<Navigate to="/" replace />} />
       <Route path="/agents" element={<Agents />} />
-      <Route path="/contact" element={<Contact />} />
       <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+      <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );
 }
