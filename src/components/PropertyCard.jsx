@@ -1,71 +1,77 @@
 import { Link } from "react-router-dom";
-import { BedDouble, Bath, Maximize, MapPin, ArrowUpRight } from "lucide-react";
+import { BedDouble, Bath, Maximize, MapPin, Heart } from "lucide-react";
+import { useFavorites } from "../context/useFavorites";
 import "./PropertyCard.css";
 
 function PropertyCard({ property }) {
-  const formattedPrice = new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    maximumFractionDigits: 0,
-  }).format(property.price);
+  const { isFavorite, toggleFavorite } = useFavorites();
+  const saved = isFavorite(property.id);
+
+  const formatPrice = (price) =>
+    new Intl.NumberFormat("en-US", {
+      style: "currency",
+      currency: "USD",
+      maximumFractionDigits: 0,
+    }).format(price);
 
   return (
     <article className="property-card">
-      <div className="property-card-image-wrapper">
-        <img
-          className="property-card-image"
-          src={property.image}
-          alt={property.title}
-          loading="lazy"
-        />
+      <div className="property-card-image">
+        <img src={property.image} alt={property.title} />
 
-        <div className="property-card-badges">
-          <span className="property-status-badge">{property.status}</span>
-          <span className="property-type-badge">{property.type}</span>
-        </div>
+        <span className="property-card-status">
+          {property.status || "For Sale"}
+        </span>
+
+        <button
+          type="button"
+          className={`property-card-favorite ${saved ? "is-favorite" : ""}`}
+          aria-label={
+            saved
+              ? `Remove ${property.title} from favorites`
+              : `Save ${property.title} to favorites`
+          }
+          aria-pressed={saved}
+          onClick={() => toggleFavorite(property.id)}
+        >
+          <Heart size={18} fill={saved ? "currentColor" : "none"} />
+        </button>
       </div>
 
       <div className="property-card-content">
-        <div className="property-card-price">
-          {formattedPrice}
-          {property.status === "For Rent" && (
-            <span className="property-price-period"> / month</span>
-          )}
+        <div className="property-card-price-row">
+          <strong className="property-card-price">
+            {formatPrice(property.price)}
+          </strong>
+          <span className="property-card-type">{property.type}</span>
         </div>
 
-        <h3 className="property-card-title">{property.title}</h3>
+        <h3 className="property-card-title">
+          <Link to={`/properties/${property.id}`}>{property.title}</Link>
+        </h3>
 
-        <div className="property-card-location">
+        <p className="property-card-location">
           <MapPin size={15} />
-          <span>{property.location}</span>
-        </div>
+          {property.location}
+        </p>
 
-        <div className="property-card-divider" />
-
-        <div className="property-card-details">
-          <div className="property-detail">
-            <BedDouble size={17} />
-            <span>{property.bedrooms} Beds</span>
-          </div>
-
-          <div className="property-detail">
-            <Bath size={17} />
-            <span>{property.bathrooms} Baths</span>
-          </div>
-
-          <div className="property-detail">
+        <div className="property-card-features">
+          <span>
+            <BedDouble size={16} />
+            {property.bedrooms} Beds
+          </span>
+          <span>
+            <Bath size={16} />
+            {property.bathrooms} Baths
+          </span>
+          <span>
             <Maximize size={16} />
-            <span>{property.area.toLocaleString("en-US")} sqft</span>
-          </div>
+            {property.area} sqft
+          </span>
         </div>
 
-        <Link
-          to={`/properties/${property.id}`}
-          className="property-card-link"
-          aria-label={`View details for ${property.title}`}
-        >
+        <Link to={`/properties/${property.id}`} className="property-card-link">
           View Property
-          <ArrowUpRight size={17} />
         </Link>
       </div>
     </article>
