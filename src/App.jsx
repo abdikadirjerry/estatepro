@@ -7,6 +7,7 @@ import Properties from "./pages/Properties";
 import PropertyDetails from "./pages/PropertyDetails";
 import Favorites from "./pages/Favorites";
 import Agents from "./pages/Agents";
+import Contact from "./pages/Contact";
 
 function Home() {
   return (
@@ -45,6 +46,7 @@ function App() {
       <Route path="/contact" element={<ComingSoon title="Contact Us" />} />
       <Route path="*" element={<Navigate to="/" replace />} />
       <Route path="/agents" element={<Agents />} />
+      <Route path="/contact" element={<Contact />} />
     </Routes>
   );
 }
