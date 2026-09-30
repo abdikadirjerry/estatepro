@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import PropertySearch from "./components/PropertySearch";
+import FeaturedProperties from "./components/FeaturedProperties";
 
 function HomePage() {
   return (
@@ -10,6 +11,7 @@ function HomePage() {
       <main>
         <Hero />
         <PropertySearch />
+        <FeaturedProperties />
       </main>
     </>
   );
