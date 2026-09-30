@@ -2,11 +2,14 @@ import { Link } from "react-router-dom";
 import { Building2, Menu, X } from "lucide-react";
 import { useState } from "react";
 import "./Header.css";
+import { useFavorites } from "../context/useFavorites";
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const closeMenu = () => setMenuOpen(false);
+
+  const { favoritesCount } = useFavorites();
 
   return (
     <header className="site-header">
@@ -52,6 +55,14 @@ function Header() {
 
           <Link to="/properties" className="header-cta" onClick={closeMenu}>
             Explore Properties
+          </Link>
+
+          <Link to="/favorites" className="favorites-nav-link">
+            <Heart size={17} />
+            <span>Favorites</span>
+            {favoritesCount > 0 && (
+              <span className="favorites-nav-count">{favoritesCount}</span>
+            )}
           </Link>
         </nav>
       </div>

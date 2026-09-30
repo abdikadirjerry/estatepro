@@ -136,3 +136,29 @@
     height: 38px;
   }
 }
+
+.favorites-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.favorites-nav-link:hover {
+  color: #c59d5f;
+}
+
+.favorites-nav-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 19px;
+  height: 19px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: #c59d5f;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+}

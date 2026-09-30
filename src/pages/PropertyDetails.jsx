@@ -17,12 +17,15 @@ import {
 import Header from "../components/Header";
 import properties from "../data/properties";
 import "./PropertyDetails.css";
+import { useFavorites } from "../context/useFavorites";
 
 function PropertyDetails() {
   const { id } = useParams();
   const property = properties.find((item) => item.id === Number(id));
   const [activeImage, setActiveImage] = useState(0);
   const [showMessage, setShowMessage] = useState(false);
+
+  const { isFavorite, toggleFavorite } = useFavorites();
 
   if (!property) {
     return (
@@ -110,11 +113,19 @@ function PropertyDetails() {
               <button
                 type="button"
                 className="details-action-button"
-                aria-label="Add property to favorites"
-                onClick={() => alert("Favorites will be available in Part 6.")}
+                aria-label={
+                  isFavorite(property.id)
+                    ? "Remove property from favorites"
+                    : "Save property to favorites"
+                }
+                aria-pressed={isFavorite(property.id)}
+                onClick={() => toggleFavorite(property.id)}
               >
-                <Heart size={19} />
-                <span>Save</span>
+                <Heart
+                  size={19}
+                  fill={isFavorite(property.id) ? "currentColor" : "none"}
+                />
+                <span>{isFavorite(property.id) ? "Saved" : "Save"}</span>
               </button>
 
               <button
