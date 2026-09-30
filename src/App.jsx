@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
+import PropertySearch from "./components/PropertySearch";
 
 function HomePage() {
   return (
@@ -8,6 +9,7 @@ function HomePage() {
       <Header />
       <main>
         <Hero />
+        <PropertySearch />
       </main>
     </>
   );
