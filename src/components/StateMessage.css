@@ -1,0 +1,84 @@
+.state-message {
+  width: 100%;
+  min-height: 260px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 36px 24px;
+  text-align: center;
+  background: #ffffff;
+  border: 1px solid #e8ebf0;
+  border-radius: 16px;
+}
+
+.state-message__icon {
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 18px;
+  color: #64748b;
+  background: #f1f5f9;
+  border-radius: 50%;
+}
+
+.state-message--loading .state-message__icon {
+  color: #c69b4b;
+  background: #fbf5e9;
+}
+
+.state-message--error .state-message__icon {
+  color: #dc2626;
+  background: #fef2f2;
+}
+
+.state-message__spinner {
+  animation: state-message-spin 1s linear infinite;
+}
+
+.state-message__title {
+  margin: 0 0 8px;
+  color: #14213d;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.state-message__description {
+  max-width: 420px;
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.state-message__action {
+  margin-top: 20px;
+}
+
+@keyframes state-message-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .state-message {
+    min-height: 220px;
+    padding: 28px 18px;
+  }
+
+  .state-message__title {
+    font-size: 18px;
+  }
+
+  .state-message__description {
+    font-size: 13px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .state-message__spinner {
+    animation-duration: 2s;
+  }
+}
