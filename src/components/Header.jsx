@@ -1,22 +1,29 @@
-import { Link } from "react-router-dom";
-import { Building2, Menu, X, Heart  } from "lucide-react";
 import { useState } from "react";
-import "./Header.css";
+import { Link, NavLink } from "react-router-dom";
+import { Menu, X, Heart, Home, ChevronDown } from "lucide-react";
 import { useFavorites } from "../context/useFavorites";
+import "./Header.css";
+
+const navLinks = [
+  { label: "Home", path: "/" },
+  { label: "Properties", path: "/properties" },
+  { label: "Agents", path: "/agents" },
+  { label: "About Us", path: "/about" },
+  { label: "Contact", path: "/contact" },
+];
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { favorites } = useFavorites();
 
   const closeMenu = () => setMenuOpen(false);
-
-  const { favoritesCount } = useFavorites();
 
   return (
     <header className="site-header">
       <div className="header-container">
         <Link to="/" className="brand" onClick={closeMenu}>
           <span className="brand-icon">
-            <Building2 size={24} strokeWidth={2.2} />
+            <Home size={23} strokeWidth={2.2} />
           </span>
           <span className="brand-name">
             Estate<span>Pro</span>
@@ -24,46 +31,58 @@ function Header() {
         </Link>
 
         <button
-          className="mobile-menu-toggle"
           type="button"
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          className="mobile-menu-toggle"
+          aria-label={
+            menuOpen ? "Close navigation menu" : "Open navigation menu"
+          }
           aria-expanded={menuOpen}
-          onClick={() => setMenuOpen(!menuOpen)}
+          aria-controls="primary-navigation"
+          onClick={() => setMenuOpen((open) => !open)}
         >
-          {menuOpen ? <X size={24} /> : <Menu size={24} />}
+          {menuOpen ? <X size={25} /> : <Menu size={25} />}
         </button>
 
         <nav
-          className={`header-nav ${menuOpen ? "nav-open" : ""}`}
+          id="primary-navigation"
+          className={`header-nav ${menuOpen ? "is-open" : ""}`}
           aria-label="Main navigation"
         >
-          <Link to="/" onClick={closeMenu}>
-            Home
-          </Link>
-          <Link to="/properties" onClick={closeMenu}>
-            Properties
-          </Link>
-          <Link to="/agents" onClick={closeMenu}>
-            Agents
-          </Link>
-          <Link to="/about" onClick={closeMenu}>
-            About Us
-          </Link>
-          <Link to="/contact" onClick={closeMenu}>
-            Contact
-          </Link>
+          <div className="nav-links">
+            {navLinks.map((link) => (
+              <NavLink
+                key={link.path}
+                to={link.path}
+                end={link.path === "/"}
+                className={({ isActive }) =>
+                  `nav-link ${isActive ? "active" : ""}`
+                }
+                onClick={closeMenu}
+              >
+                {link.label}
+              </NavLink>
+            ))}
+          </div>
 
-          <Link to="/properties" className="header-cta" onClick={closeMenu}>
-            Explore Properties
-          </Link>
+          <div className="header-actions">
+            <Link
+              to="/favorites"
+              className="favorites-link"
+              onClick={closeMenu}
+              aria-label={`Favorites, ${favorites.length} saved properties`}
+            >
+              <Heart size={19} />
+              <span>Favorites</span>
+              {favorites.length > 0 && (
+                <span className="favorites-count">{favorites.length}</span>
+              )}
+            </Link>
 
-          <Link to="/favorites" className="favorites-nav-link">
-            <Heart size={17} />
-            <span>Favorites</span>
-            {favoritesCount > 0 && (
-              <span className="favorites-nav-count">{favoritesCount}</span>
-            )}
-          </Link>
+            <Link to="/properties" className="header-cta" onClick={closeMenu}>
+              Explore Homes
+              <ChevronDown size={16} className="cta-chevron" />
+            </Link>
+          </div>
         </nav>
       </div>
     </header>
