@@ -5,6 +5,7 @@ import PropertySearch from "./components/PropertySearch";
 import FeaturedProperties from "./components/FeaturedProperties";
 import Properties from "./pages/Properties";
 import PropertyDetails from "./pages/PropertyDetails";
+import Favorites from "./pages/Favorites";
 
 function Home() {
   return (
@@ -37,6 +38,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/properties" element={<Properties />} />
       <Route path="/properties/:id" element={<PropertyDetails />} />
+      <Route path="/favorites" element={<Favorites />} />
       <Route path="/agents" element={<ComingSoon title="Our Agents" />} />
       <Route path="/about" element={<ComingSoon title="About EstatePro" />} />
       <Route path="/contact" element={<ComingSoon title="Contact Us" />} />
