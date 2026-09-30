@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import PropertySearch from "./components/PropertySearch";
 import FeaturedProperties from "./components/FeaturedProperties";
+import Properties from "./pages/Properties";
 
 function HomePage() {
   return (
@@ -33,6 +34,7 @@ function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePage />} />
+      <Route path="/properties" element={<Properties />} />
       <Route path="*" element={<ComingSoon />} />
     </Routes>
   );
