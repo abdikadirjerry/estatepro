@@ -1,0 +1,233 @@
+.property-search-section {
+  position: relative;
+  z-index: 2;
+  padding: 78px 0 85px;
+  background: #f6f8fb;
+}
+
+.property-search-container {
+  width: min(1200px, 92%);
+  margin: 0 auto;
+}
+
+.property-search-heading {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.property-search-eyebrow {
+  color: #b48a46;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.property-search-heading h2 {
+  margin: 12px 0 10px;
+  color: #142b4a;
+  font-size: clamp(28px, 4vw, 38px);
+  font-weight: 800;
+  letter-spacing: -1.2px;
+}
+
+.property-search-heading p {
+  margin: 0;
+  color: #68778a;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.property-search-form {
+  padding: 30px;
+  background: #ffffff;
+  border: 1px solid #e8edf3;
+  border-radius: 12px;
+  box-shadow: 0 16px 45px rgba(20, 43, 74, 0.07);
+}
+
+.search-fields {
+  display: grid;
+  grid-template-columns: 1.5fr 1.1fr 0.9fr 0.9fr;
+  gap: 18px;
+}
+
+.search-field {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.search-field label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #243b59;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.search-field label svg {
+  flex-shrink: 0;
+  color: #bd9657;
+}
+
+.search-field input,
+.search-field select {
+  width: 100%;
+  height: 49px;
+  padding: 0 13px;
+  color: #243b59;
+  background: #f8fafc;
+  border: 1px solid #e4eaf1;
+  border-radius: 6px;
+  outline: none;
+  font-size: 13px;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.search-field input::placeholder {
+  color: #98a3b2;
+}
+
+.search-field input:focus,
+.search-field select:focus {
+  background: #ffffff;
+  border-color: #bd9657;
+  box-shadow: 0 0 0 3px rgba(189, 150, 87, 0.13);
+}
+
+.search-field select {
+  cursor: pointer;
+}
+
+.property-search-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px solid #edf0f4;
+}
+
+.search-reset-btn,
+.search-submit-btn {
+  min-height: 47px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 0 19px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.search-reset-btn {
+  color: #617086;
+  background: #ffffff;
+  border: 1px solid #e0e6ed;
+}
+
+.search-reset-btn:hover {
+  color: #17365c;
+  background: #f4f7fa;
+}
+
+.search-submit-btn {
+  min-width: 205px;
+  color: #ffffff;
+  background: #17365c;
+  border: 1px solid #17365c;
+}
+
+.search-submit-btn:hover {
+  background: #244d7c;
+  transform: translateY(-1px);
+}
+
+.property-search-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  margin-top: 23px;
+  color: #7c8999;
+  font-size: 12px;
+}
+
+.search-note-dot {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  background: #c49a52;
+  border-radius: 50%;
+}
+
+@media (max-width: 900px) {
+  .search-fields {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .property-search-form {
+    padding: 25px;
+  }
+}
+
+@media (max-width: 600px) {
+  .property-search-section {
+    padding: 58px 0 65px;
+  }
+
+  .property-search-heading {
+    margin-bottom: 24px;
+  }
+
+  .property-search-heading p {
+    max-width: 340px;
+    margin: 0 auto;
+    font-size: 14px;
+  }
+
+  .property-search-form {
+    padding: 20px 16px;
+    border-radius: 9px;
+  }
+
+  .search-fields {
+    grid-template-columns: 1fr;
+    gap: 19px;
+  }
+
+  .search-field {
+    gap: 9px;
+  }
+
+  .property-search-actions {
+    align-items: stretch;
+    flex-direction: column-reverse;
+    gap: 10px;
+    margin-top: 22px;
+    padding-top: 18px;
+  }
+
+  .search-reset-btn,
+  .search-submit-btn {
+    width: 100%;
+  }
+
+  .property-search-note {
+    align-items: flex-start;
+    text-align: center;
+    font-size: 11px;
+  }
+}
